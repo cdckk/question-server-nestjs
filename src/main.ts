@@ -1,8 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { TransformInterceptor } from './transform/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3005);
+  
+  app.setGlobalPrefix('api') // 路由全局前缀
+
+  app.useGlobalInterceptors(new TransformInterceptor()) // 全局拦截器
+
+  await app.listen(process.env.PORT ?? 3005); // 端口
 }
 bootstrap();
