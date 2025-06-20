@@ -14,6 +14,9 @@ export class Question {
   desc: string;
 
   // 其他待补充...
+
+  @Prop({ required: true })
+  author: string;
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);

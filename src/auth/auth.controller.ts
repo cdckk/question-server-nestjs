@@ -1,7 +1,7 @@
 import { Body, Controller, Post, Get, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
-import { AuthGuard } from './auth.guard';
+// import { AuthGuard } from './auth.guard';
 import { Public } from './decorators/public.decorator';
 
 @Controller('auth')
@@ -16,7 +16,7 @@ export class AuthController {
         return await this.authService.signIn(username, password)
     }
 
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     @Get('profile')
     async getProfile(@Request() req) {
         return req.user
