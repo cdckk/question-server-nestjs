@@ -14,6 +14,6 @@ async function bootstrap() {
 
   app.enableCors() // 跨域
 
-  await app.listen(process.env.PORT ?? 3005); // 端口
+  await app.listen(process.env.PORT ?? 3005, '0.0.0.0'); // 端口
 }
 bootstrap();
